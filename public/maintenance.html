@@ -5,6 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>نظام إدارة الصيانة</title>
+<!-- ✅ خط Cairo العربي -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -33,7 +35,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-family: 'Cairo', 'Segoe UI', 'Apple Color Emoji', 'Segoe UI Emoji', Tahoma, Arial, sans-serif;
   background: linear-gradient(135deg, var(--tvtc-primary) 0%, var(--tvtc-secondary) 100%);
   min-height: 100vh;
   direction: rtl;
@@ -47,7 +49,7 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, var(--tvtc-primary) 0%, var(--tvtc-secondary) 100%);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -55,9 +57,32 @@ body {
   color: white;
 }
 
+.loading-screen.show {
+  display: flex !important;
+}
+
+.loading-message {
+  font-size: 2rem;
+  margin-top: 40px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: fadeInScale 0.5s ease;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .spinner {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border: 4px solid rgba(255, 255, 255, 0.3);
   border-top-color: white;
   border-radius: 50%;
@@ -410,6 +435,20 @@ box-shadow: 0 0 0 3px rgba(0, 99, 65, 0.1);
 
 .form-group input,
 .form-group select,
+.form-group input:readonly {
+  background: #f0f8f5;
+  cursor: default;
+  color: #006341;
+  font-weight: 500;
+}
+
+.input-group input:readonly,
+.input-group select:readonly {
+  background: #f0f8f5;
+  cursor: default;
+  color: #006341;
+}
+
 .form-group textarea {
   width: 100%;
   padding: 12px 15px;
@@ -431,6 +470,20 @@ box-shadow: 0 0 0 3px rgba(0, 99, 65, 0.1);
 .form-group input:disabled {
   background: #f5f5f5;
   cursor: not-allowed;
+}
+
+.form-group input:readonly {
+  background: #f0f8f5;
+  cursor: default;
+  color: #006341;
+  font-weight: 500;
+}
+
+.input-group input:readonly,
+.input-group select:readonly {
+  background: #f0f8f5;
+  cursor: default;
+  color: #006341;
 }
 
 .form-group textarea {
@@ -701,11 +754,6 @@ background: var(--success);
 .btn-delete {
 background: var(--error);
 
-  color: white;
-}
-
-.btn-pdf {
-background: var(--error);
   color: white;
 }
 
@@ -1211,6 +1259,194 @@ border: 2px solid rgba(0, 99, 65, 0.25);
   transform:none;
 }
 
+/* ✅ Media Queries للأجهزة الصغيرة (الجوال) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .header h1 {
+    font-size: 1.3rem !important;
+  }
+  
+  .header p {
+    font-size: 0.9rem;
+  }
+  
+  .container {
+    margin: 10px;
+    border-radius: 12px;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  
+  .input-group input,
+  .input-group select,
+  .input-group textarea {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+  
+  .btn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+  
+  .login-box {
+    padding: 25px;
+    border-radius: 15px;
+  }
+  
+  .login-box h1 {
+    font-size: 1.5rem;
+  }
+  
+  .logo-icon {
+    font-size: 3rem;
+  }
+  
+  table {
+    font-size: 0.75rem;
+  }
+  
+  table th, table td {
+    padding: 8px 4px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .action-btn {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .nav-tabs {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .nav-tab {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 80px;
+  }
+  
+  .modal-content {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+  
+  .stat-card {
+    padding: 15px;
+  }
+  
+  .stat-card h3 {
+    font-size: 0.9rem;
+  }
+  
+  .stat-card .stat-value {
+    font-size: 1.5rem;
+  }
+  
+  .loading-message {
+    font-size: 1.2rem !important;
+    letter-spacing: 0px;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .user-info-bar {
+    padding: 10px 15px;
+  }
+  
+  .user-avatar {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .login-actions {
+    top: 10px;
+    left: 10px;
+    gap: 5px;
+  }
+  
+  .btn-home-pro {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .form-section {
+    padding: 15px;
+  }
+  
+  .tab-content {
+    padding: 15px;
+  }
+}
+
+/* ✅ Media Queries للتابلت (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  body {
+    font-size: 15px;
+  }
+  
+  .header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  table {
+    font-size: 0.9rem;
+  }
+  
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+  }
+  
+  .container {
+    margin: 15px;
+  }
+}
+
+/* ✅ Media Queries للشاشات الكبيرة (فوق 768px) */
+@media (min-width: 769px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 </style>
 </head>
@@ -1219,7 +1455,7 @@ border: 2px solid rgba(0, 99, 65, 0.25);
 <!-- Loading Screen -->
 <div class="loading-screen" id="loadingScreen">
   <div class="spinner"></div>
-  <p style="margin-top: 20px; font-size: 1.2rem;">جاري تحميل النظام...</p>
+  <p class="loading-message">⏳ جاري تحميل البيانات...</p>
 </div>
 
 <!-- Sync Indicator - محسّن -->
@@ -1343,7 +1579,7 @@ border: 2px solid rgba(0, 99, 65, 0.25);
         
         <div class="form-group">
           <label>اسم صاحب الطلب</label>
-          <input type="text" id="requesterName" placeholder="الاسم الكامل" required>
+          <input type="text" id="requesterName" placeholder="الاسم الكامل" required readonly>
         </div>
         
         <div class="form-group">
@@ -1509,12 +1745,15 @@ border: 2px solid rgba(0, 99, 65, 0.25);
         <h3 id="rejectedRequests">0</h3>
         <p>طلبات مرفوضة</p>
       </div>
+      <div class="stat-card">
+        <h3 id="averageRating">0%</h3>
+        <p>نسبة الرضا ⭐</p>
+      </div>
     </div>
     
     <div style="margin-bottom: 20px;">
       <button class="btn-primary btn-excel" onclick="exportToExcel()">📊 تصدير Excel</button>
-      <button class="btn-primary btn-success" onclick="exportAllWithTemplates()">📋 تصدير الكل بالنموذج</button>
-      <button class="btn-primary btn-pdf" onclick="exportToPDF()">📄 تصدير PDF</button>
+      <button class="btn-primary btn-success" onclick="exportAllWithTemplates()" style="display: none;">📋 تصدير الكل بالنموذج</button>
       <button class="btn-secondary" onclick="printReport()">🖨️ طباعة</button>
     </div>
     
@@ -1566,8 +1805,8 @@ border: 2px solid rgba(0, 99, 65, 0.25);
 
 <!-- Modals will be added here by JavaScript -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <script>
@@ -1915,7 +2154,7 @@ function createModals() {
           
           <div class="form-group">
             <label>اسم الفني</label>
-            <input type="text" id="technicianName" required>
+            <input type="text" id="technicianName" required readonly>
           </div>
           
           <div class="form-group">
@@ -1964,7 +2203,7 @@ function createModals() {
           
           <div class="form-group">
             <label>اسم المشرف</label>
-            <input type="text" id="supervisorName" required>
+            <input type="text" id="supervisorName" required readonly>
           </div>
           
           <div class="form-group" id="decisionBlock" style="display:none">
@@ -2689,34 +2928,60 @@ function setButtonLoading(buttonId, isLoading, originalText = '') {
 // Show Main App
 // ✅ استبدل دالة showMainApp كاملة
 async function showMainApp() {
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('userBar').style.display = 'flex';
-  document.getElementById('mainContainer').style.display = 'block';
+  try {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('userBar').style.display = 'flex';
+    document.getElementById('mainContainer').style.display = 'block';
 
-  document.getElementById('userName').textContent = currentUser.name;
-  document.getElementById('userRole').textContent = currentUser.role;
+    document.getElementById('userName').textContent = currentUser.name;
+    document.getElementById('userRole').textContent = currentUser.role;
 
-  setupPermissions();
-  lockRequesterToCurrentUser();
+    setupPermissions();
+    lockRequesterToCurrentUser();
 
-  // ⬇️ التحسين: معالجة Queue بصمت تام
-  if (syncQueue.queue.length > 0) {
-    console.log(`📤 معالجة ${syncQueue.queue.length} عملية معلقة...`);
-    showSyncIndicator('syncing', `${syncQueue.queue.length} عملية معلقة...`, false);
-    await syncQueue.process();
+    // ⬇️ التحسين: معالجة Queue بصمت تام
+    if (syncQueue.queue.length > 0) {
+      console.log(`📤 معالجة ${syncQueue.queue.length} عملية معلقة...`);
+      showSyncIndicator('syncing', `${syncQueue.queue.length} عملية معلقة...`, false);
+      try {
+        await syncQueue.process();
+      } catch (e) {
+        console.warn('Queue process error:', e);
+      }
+    }
+
+    // ✅ عرض شاشة الانتظار الكاملة أثناء التحميل
+    showLoadingScreen(true);
+
+    // ⬇️ التحسين: مزامنة صامتة + تحميل الفنيين بالتوازي
+    try {
+      const syncPromise = autoSync(true).catch(e => {
+        console.warn('autoSync error:', e);
+        return null;
+      });
+      const techPromise = loadTechnicians().catch(e => {
+        console.warn('loadTechnicians error:', e);
+        return null;
+      });
+
+      // انتظر الاثنين معًا (أسرع)
+      await Promise.all([syncPromise, techPromise]);
+    } catch (e) {
+      console.warn('Main sync error:', e);
+    }
+
+    refreshAllTables();
+    
+    // ✅ إخفاء شاشة الانتظار بعد الانتهاء
+    showLoadingScreen(false);
+    
+    // ⬇️ رسالة ترحيب واحدة فقط
+    showNotification(`مرحباً ${currentUser.name} 👋`, 'success', 2500);
+  } catch (error) {
+    console.error('showMainApp error:', error);
+    showLoadingScreen(false);
+    showNotification('حدث خطأ عند تحميل النظام', 'error');
   }
-
-  // ⬇️ التحسين: مزامنة صامتة + تحميل الفنيين بالتوازي
-  const syncPromise = autoSync(true); // صامت
-  const techPromise = loadTechnicians(); // سيظهر مؤشر خفيف
-
-  // انتظر الاثنين معًا (أسرع)
-  await Promise.all([syncPromise, techPromise]);
-
-  refreshAllTables();
-  
-  // ⬇️ رسالة ترحيب واحدة فقط
-  showNotification(`مرحباً ${currentUser.name} 👋`, 'success', 2500);
 }
 
 // ===== [NEW] Transition rules =====
@@ -3260,6 +3525,9 @@ function resetForm() {
 // ✅ إضافة طلب: الشيت أولاً، ثم تحديث النسخة المحلية
 async function submitNewRequest(e) {
   e.preventDefault();
+  
+  // ✅ عرض شاشة الانتظار
+  showLoadingScreen(true);
 
   const submitBtn = document.getElementById('submitRequestBtn');
   submitBtn.disabled = true;
@@ -3267,6 +3535,7 @@ async function submitNewRequest(e) {
 
   if (!uploadedImage) {
     alert('❌ يجب رفع صورة العطل قبل إرسال الطلب');
+    showLoadingScreen(false);
     submitBtn.disabled = false;
     submitBtn.textContent = 'إرسال الطلب';
     return;
@@ -3333,6 +3602,9 @@ async function submitNewRequest(e) {
 
   submitBtn.disabled = false;
   submitBtn.textContent = 'إرسال الطلب';
+  
+  // ✅ إخفاء شاشة الانتظار
+  showLoadingScreen(false);
 
   setTimeout(() => { document.getElementById('newRequestAlert').style.display = 'none'; }, 5000);
 }
@@ -3357,11 +3629,15 @@ function openTechnicianModal(requestId) {
 async function submitTechnicianReport(e) {
   e.preventDefault();
   
+  // ✅ عرض شاشة الانتظار
+  showLoadingScreen(true);
+  
   const requestId = document.getElementById('techRequestId').value;
 
   // التحقق من وجود صورة الإصلاح
       if (!techRepairImage) {
         alert('❌ يجب رفع صورة الإصلاح قبل إرسال التقرير');
+        showLoadingScreen(false);
         return;
       }
       const request = requests.find(r => r.id === requestId);
@@ -3378,13 +3654,21 @@ async function submitTechnicianReport(e) {
         repairImage: techRepairImage
       }
     });
-    if(!res.ok){ alert(res.message); return; }
+    if(!res.ok){ 
+      alert(res.message); 
+      showLoadingScreen(false);
+      return; 
+    }
 
     closeModal('technicianModal');
     techRepairImage = null;
     showAlert('technicianAlert', 'تم حفظ التقرير بنجاح!', 'success');
     document.getElementById('technicianForm').reset();
     refreshAllTables();
+    
+    // ✅ إخفاء شاشة الانتظار
+    showLoadingScreen(false);
+    
     setTimeout(()=>{ document.getElementById('technicianAlert').style.display='none'; },3000);
 
 }
@@ -3426,6 +3710,10 @@ async function openSupervisorModal(requestId) {
 
 async function submitSupervisorReview(e) {
   e.preventDefault();
+  
+  // ✅ عرض شاشة الانتظار
+  showLoadingScreen(true);
+  
   const requestId = document.getElementById('supRequestId').value;
   const notes     = document.getElementById('supervisorNotes').value;
   const chosenTech= (document.getElementById('assignedTechnicianSelect')?.value || '').trim();
@@ -3436,7 +3724,11 @@ async function submitSupervisorReview(e) {
 
   // 1) لو مو "جاري المراجعة": نسمح فقط بالتعيين
   if (cur !== 'جاري المراجعة') {
-    if (!chosenTech) { alert('اختر الفني أولاً'); return; }
+    if (!chosenTech) { 
+      alert('اختر الفني أولاً'); 
+      showLoadingScreen(false);
+      return; 
+    }
     const r1 = updateRequestLifecycle({
       requestId,
       action: 'assignTechnician',
@@ -3444,14 +3736,23 @@ async function submitSupervisorReview(e) {
       role:  currentUser?.role,
       payload: { assignedTechnicianName: chosenTech, supervisorNotes: notes }
     });
-    if (!r1.ok) { alert(r1.message); return; }
+    if (!r1.ok) { 
+      alert(r1.message); 
+      showLoadingScreen(false);
+      return; 
+    }
     closeModal('supervisorModal');
     showAlert('supervisorAlert','تم تحويل الطلب للفني بنجاح','success');
+    showLoadingScreen(false);
     return;
   }
 
   // 2) لو نحن في "جاري المراجعة": القرار فقط
-  if (!decision) { alert('اختر القرار (معتمد / يحتاج مراجعة)'); return; }
+  if (!decision) { 
+    alert('اختر القرار (معتمد / يحتاج مراجعة)'); 
+    showLoadingScreen(false);
+    return; 
+  }
 
   const r2 = updateRequestLifecycle({
     requestId,
@@ -3460,10 +3761,17 @@ async function submitSupervisorReview(e) {
     role:  currentUser?.role,
     payload: { decision, supervisorNotes: notes }
   });
-  if (!r2.ok) { alert(r2.message); return; }
+  if (!r2.ok) { 
+    alert(r2.message); 
+    showLoadingScreen(false);
+    return; 
+  }
 
   closeModal('supervisorModal');
   showAlert('supervisorAlert','تم حفظ قرار المشرف','success');
+  
+  // ✅ إخفاء شاشة الانتظار
+  showLoadingScreen(false);
 }
 
 // Open Client Modal
@@ -3475,6 +3783,9 @@ function openClientModal(requestId) {
 // Submit Client Feedback
 async function submitClientFeedback(e) {
   e.preventDefault();
+  
+  // ✅ عرض شاشة الانتظار
+  showLoadingScreen(true);
   
   const requestId = document.getElementById('clientRequestId').value;
   const request = requests.find(r => r.id === requestId);
@@ -3499,6 +3810,9 @@ async function submitClientFeedback(e) {
     refreshAllTables();
     
     document.getElementById('clientForm').reset();
+    
+    // ✅ إخفاء شاشة الانتظار
+    showLoadingScreen(false);
     
     setTimeout(() => {
       document.getElementById('clientAlert').style.display = 'none';
@@ -3677,9 +3991,16 @@ function openClientActionsModal(requestId) {
 
 async function submitClientAction(e) {
   e.preventDefault();
+  
+  // ✅ عرض شاشة الانتظار
+  showLoadingScreen(true);
+  
   const id = document.getElementById('clientActionRequestId').value;
   const reason = (document.getElementById('clientActionReason').value||'').trim();
-  if (!id || !reason) return;
+  if (!id || !reason) {
+    showLoadingScreen(false);
+    return;
+  }
 
   // تنفيذ حذف ناعم باسم صاحب الطلب
   const res = updateRequestLifecycle({
@@ -3696,6 +4017,9 @@ async function submitClientAction(e) {
     showNotification(res.message||'تعذّر التنفيذ', 'error');
   }
   closeModal('clientActionsModal');
+  
+  // ✅ إخفاء شاشة الانتظار
+  showLoadingScreen(false);
 }
 
 
@@ -3790,9 +4114,6 @@ async function loadTechnicians() {
   techniciansLoading = true;
   techniciansLoaded  = false;
 
-  // ⬇️ التحسين: مؤشر صامت فقط بدون notification منبثق
-  showSyncIndicator('syncing', 'تحميل الفنيين...', false);
-
   // جرّب من الكاش أولًا (تسريع)
   let cached = loadUsersCache();
   if (cached.length) users = cached;
@@ -3818,9 +4139,6 @@ async function loadTechnicians() {
   // نهاية: انتهى التحميل
   techniciansLoaded  = true;
   techniciansLoading = false;
-
-  // ⬇️ التحسين: إشارة نجاح صامتة سريعة
-  showSyncIndicator('success', `${users.filter(u=>u.role===ROLES.TECHNICIAN).length} فني`, true);
 }
 // خريطة بسيطة بين نوع العطل وتخصص الفني
 function mapFaultToSpecialty(faultType) {
@@ -3902,6 +4220,43 @@ function refreshAllTables() {
   updateStatistics();
 }
 
+
+// ✅ دالة تحويل التقييم (1-5) إلى نجوم
+// ✅ دالة عرض التقييم النصي مع النجوم
+function renderStarRating(rating) {
+  if (!rating) return '-';
+  
+  const text = String(rating || '').trim();
+  if (!text) return '-';
+  
+  let stars = '';
+  if (text.includes('ممتاز')) stars = '⭐⭐⭐⭐⭐';
+  else if (text.includes('جيد جداً')) stars = '⭐⭐⭐⭐☆';
+  else if (text.includes('جيد')) stars = '⭐⭐⭐☆☆';
+  else if (text.includes('مقبول')) stars = '⭐⭐☆☆☆';
+  else if (text.includes('ضعيف')) stars = '⭐☆☆☆☆';
+  
+  return stars ? `${stars} ${text}` : text;
+}
+
+// ✅ دالة حساب متوسط التقييمات
+function calculateAverageRating() {
+  const ratedRequests = requests.filter(r => 
+    r.satisfactionLevel && 
+    ['مكتمل', 'غير مكتمل'].includes(r.status)
+  );
+  
+  if (ratedRequests.length === 0) return '-';
+  
+  // عد التقييمات الإيجابية (ممتاز وجيد جداً وجيد)
+  const goodRatings = ratedRequests.filter(r => {
+    const text = String(r.satisfactionLevel || '').toLowerCase();
+    return text.includes('ممتاز') || text.includes('جيد');
+  }).length;
+  
+  const percentage = Math.round((goodRatings / ratedRequests.length) * 100);
+  return `${percentage}%`;
+}
 
 // Refresh Pending Requests Table
 function refreshPendingRequestsTable() {
@@ -3992,14 +4347,14 @@ function lockRequesterToCurrentUser() {
 
   // تعبئة تلقائية باسم المستخدم + قفل الحقل
   nameInput.value = currentUser?.name || '';
-  nameInput.disabled = true;
+  
   nameInput.readOnly = true;
   nameInput.placeholder = 'يُعبّأ تلقائيًا من حساب الدخول';
   nameInput.title = 'هذا الحقل يُحدَّد تلقائيًا حسب المستخدم الذي سجّل الدخول';
 
   // إخفاء الحقل بصريًا (اختياري) — احذف السطرين التاليين لو تحب تبقيه ظاهرًا
-  const group = nameInput.closest('.form-group');
-  if (group) group.style.display = 'none';
+  
+  
 }
 
 // يُرجع الطلبات المرئية للمستخدم الحالي حسب الدور
@@ -4043,9 +4398,8 @@ function refreshMyRequestsTable() {
   if (!tbody) return;
 
   let list = [];
-  if (currentUser?.role === ROLES.EMPLOYEE) {
-    list = (requests||[]).filter(r => r.requesterName === currentUser.name);
-  }
+  // جميع المستخدمين يرون طلباتهم بغض النظر عن الدور
+  list = (requests||[]).filter(r => r.requesterName === currentUser.name);
 
   if (!list.length) {
     tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:30px; color:#999;">لا توجد طلبات حتى الآن</td></tr>';
@@ -4179,12 +4533,11 @@ function refreshAllRequestsTable() {
       <td>${req.supervisorName || '-'}</td>
       <td>${resolveImageSrc(req.image || req.imageUrl) ? '<button class="action-btn btn-image" onclick="viewImage(\'' + resolveImageSrc(req.image || req.imageUrl).replace(/'/g, "\\'") + '\')">📷</button>' : '-'}</td>
       <td><span class="status-badge status-${getStatusClass(req.status)}">${req.status}</span></td>
-      <td>${req.satisfactionLevel || '-'}</td>
+      <td>${renderStarRating(req.satisfactionLevel)}</td>
       <td>
         <div class="action-buttons">
           <button class="action-btn btn-view" onclick="viewRequest('${req.id}')">مسار</button>
           <button class="action-btn btn-excel" onclick="exportWithTemplate('${req.id}')" title="تصدير بالنموذج">📋 نموذج</button>
-          <button class="action-btn btn-pdf" onclick="exportSinglePDF('${req.id}')">PDF</button>
           ${canDelete ? `<button class="action-btn btn-delete" onclick="deleteRequest('${req.id}')">حذف</button>` : ''}
         </div>
       </td>
@@ -4211,6 +4564,13 @@ function updateStatistics() {
 
   document.getElementById('rejectedRequests').textContent =
     requests.filter(r => rejectedSet.has(st(r.status))).length;
+
+  // ✅ عرض نسبة التقييمات الإيجابية
+  const avgRating = calculateAverageRating();
+  const ratingElement = document.getElementById('averageRating');
+  if (ratingElement) {
+    ratingElement.textContent = avgRating !== '-' ? avgRating : '0%';
+  }
 }
 
 
@@ -4251,114 +4611,78 @@ function exportToExcel() {
   XLSX.writeFile(wb, fileName);
 }
 
-// Export to PDF
-function exportToPDF() {
-  if (requests.length === 0) {
-    alert('لا توجد بيانات للتصدير');
-    return;
-  }
-  
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF('l', 'mm', 'a4');
-  
-  //doc.setLanguage('ar');
-  doc.setR2L(true);
-  
-  doc.setFontSize(20);
-  doc.setTextColor(0, 99, 65);
-
-  doc.text('🔧', 15, 15);
-  
-  doc.setFontSize(18);
-  doc.setTextColor(0, 0, 0);
-  doc.text('تقرير الصيانة الشامل', doc.internal.pageSize.width / 2, 20, { align: 'center' });
-  
-  doc.setFontSize(12);
-  doc.text(`التاريخ: ${new Date().toLocaleDateString('ar-SA')}`, doc.internal.pageSize.width - 15, 15, { align: 'right' });
-  
-  const tableData = requests.map(req => [
-    req.id,
-    req.requesterName,
-    req.faultType,
-    req.building,
-    req.date,
-    req.technicianName || '-',
-    req.supervisorName || '-',
-    req.status,
-    (req.image || req.imageUrl) ? '✓' : '-'
-  ]);
-  
-  doc.autoTable({
-    startY: 30,
-    head: [['رقم الطلب', 'صاحب الطلب', 'نوع العطل', 'المبنى', 'التاريخ', 'الفني', 'المشرف', 'الحالة', 'صورة']],
-    body: tableData,
-    styles: {
-      font: 'helvetica',
-      fontSize: 10,
-      halign: 'center'
-    },
-    headStyles: {
-      fillColor: [0, 99, 65],
-
-      textColor: 255,
-      fontStyle: 'bold'
-    },
-    alternateRowStyles: {
-      fillColor: [245, 245, 250]
-    }
-  });
-  
-  const pageCount = doc.internal.getNumberOfPages();
-  for (let i = 1; i <= pageCount; i++) {
-    doc.setPage(i);
-    doc.setFontSize(10);
-    doc.setTextColor(150);
-    doc.text(
-      `صفحة ${i} من ${pageCount}`,
-      doc.internal.pageSize.width / 2,
-      doc.internal.pageSize.height - 10,
-      { align: 'center' }
-    );
-  }
-  
-  const fileName = `تقرير_الصيانة_${new Date().toLocaleDateString('ar-SA').replace(/\//g, '-')}.pdf`;
-  doc.save(fileName);
-}
-
 // Export All Requests with Templates
-// Export All Requests with Templates (نسخة مُحسّنة)
 async function exportAllWithTemplates() {
   if (requests.length === 0) { alert('لا توجد بيانات'); return; }
 
   showNotification('جاري تجهيز جميع النماذج...', 'info');
 
-  // 1) حمّل التمبليت كـ ArrayBuffer
-  const ab = await loadTemplateArrayBuffer();
-
-  // 2) افتح التمبليت كـ Workbook أساسي للنسخ منه
-  const baseWb = new ExcelJS.Workbook();
-  await baseWb.xlsx.load(ab);
-  const baseSheet = baseWb.worksheets[0];
-
-  // 3) أنشئ ملف الإخراج
+  // أنشئ ملف الإخراج
   const outWb = new ExcelJS.Workbook();
+  outWb.removeWorksheet(outWb.worksheets[0]);
 
-  // 4) كرر على كل طلب وأنشئ ورقة مطابقة للتمبليت
-  for (const req of requests) {
-    const sheetName = `طلب_${req.id}`.substring(0, 31);
-    const ws = outWb.addWorksheet(sheetName);
+  // لكل طلب
+  for (const request of requests) {
+    try {
+      // 1) حمل التمبليت الخام
+      const ab = await loadTemplateArrayBuffer();
+      const tempWb = new ExcelJS.Workbook();
+      await tempWb.xlsx.load(ab);
+      const tempWs = tempWb.worksheets[0];
 
-    // انسخ شكل التمبليت (إعدادات الورقة+الدمج+المقاسات+الأنماط)
-    cloneTemplateTo(baseSheet, ws);
-
-    // عبّئ الخلايا بالقيم
-    fillTemplateCells(ws, req);
-
-    // إن رغبت بإدراج الصورة داخل كل نموذج، فك التعليق:
-    // await tryInsertFaultImage(outWb, ws, req);
+      // 2) أنشئ ورقة جديدة في الملف الكبير
+      const newWs = outWb.addWorksheet(`طلب_${request.id}`.substring(0, 31));
+      
+      // 3) انسخ التنسيق والبنية (بدون القيم)
+      // انسخ الأعمدة
+      if (tempWs.columns) {
+        newWs.columns = tempWs.columns.map(col => ({
+          key: col.key,
+          width: col.width,
+          hidden: col.hidden,
+          outlineLevel: col.outlineLevel
+        }));
+      }
+      
+      // انسخ كل صف وكل خلية (تنسيق فقط، بدون قيم إلا في TEMPLATE_CELL_MAP)
+      tempWs.eachRow({ includeEmpty: true }, (row, r) => {
+        const newRow = newWs.getRow(r);
+        newRow.height = row.height;
+        
+        row.eachCell({ includeEmpty: true }, (cell, c) => {
+          const newCell = newRow.getCell(c);
+          
+          // انسخ الأنماط والتنسيقات
+          if (cell.style) {
+            newCell.style = JSON.parse(JSON.stringify(cell.style));
+          }
+          
+          // لا تضع قيم من التمبليت - سنضعها بـ fillTemplateCells فقط
+          // newCell.value = '';
+        });
+      });
+      
+      // 4) عبّئ فقط الخلايا المحددة في TEMPLATE_CELL_MAP
+      fillTemplateCells(newWs, request);
+      
+      // 5) انسخ الدمج (merged cells)
+      if (tempWs._merges) {
+        tempWs._merges.forEach(range => {
+          try { newWs.mergeCells(range); } catch(e) {}
+        });
+      }
+      
+      // 6) انسخ الإعدادات
+      newWs.pageSetup = JSON.parse(JSON.stringify(tempWs.pageSetup || {}));
+      newWs.properties = JSON.parse(JSON.stringify(tempWs.properties || {}));
+      newWs.views = JSON.parse(JSON.stringify(tempWs.views || []));
+      
+    } catch(e) {
+      console.warn(`خطأ في معالجة الطلب ${request.id}:`, e);
+    }
   }
 
-  // 5) أنشئ الملف للتحميل
+  // حفظ الملف
   const fileName = `نماذج_الصيانة_${new Date().toLocaleDateString('ar-SA').replace(/\//g, '-')}.xlsx`;
   const outBuf = await outWb.xlsx.writeBuffer();
   const blob = new Blob([outBuf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
@@ -4367,54 +4691,7 @@ async function exportAllWithTemplates() {
   a.download = fileName;
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
 
-  showNotification(`تم تصدير ${requests.length} نموذج من التمبليت!`, 'success');
-}
-
-// ينسخ ورقة التمبليت إلى ورقة جديدة مع الحفاظ على الإعدادات والدمج والتنسيقات
-function cloneTemplateTo(srcSheet, dstSheet) {
-  // إعدادات الطباعة/الورقة/العرض (تحافظ على RTL والهوامش…)
-  dstSheet.pageSetup = JSON.parse(JSON.stringify(srcSheet.pageSetup || {}));
-  dstSheet.properties = JSON.parse(JSON.stringify(srcSheet.properties || {}));
-  dstSheet.views = JSON.parse(JSON.stringify(srcSheet.views || []));
-
-  // أعمدة: العرض، الإخفاء، مستويات outline
-  if (srcSheet.columns) {
-    dstSheet.columns = srcSheet.columns.map(col => ({
-      key: col.key,
-      width: col.width,
-      hidden: col.hidden,
-      outlineLevel: col.outlineLevel
-    }));
-  }
-
-  // نسخ القيم والأنماط صفاً بصف
-  srcSheet.eachRow({ includeEmpty: true }, (row, r) => {
-    const newRow = dstSheet.getRow(r);
-    newRow.height = row.height; // مهم
-
-    row.eachCell({ includeEmpty: true }, (cell, c) => {
-      const nc = newRow.getCell(c);
-
-      // القيمة (قد تكون نص/صيغة/غ…)
-      nc.value = cell.value;
-
-      // نسخ الأنماط (font, alignment, border, fill, numFmt, protection)
-      if (cell.style) {
-        nc.style = JSON.parse(JSON.stringify(cell.style));
-      }
-
-      // احتياط لقراءة RTL لو ما كانت في التمبليت
-      nc.alignment = Object.assign({}, nc.alignment, { readingOrder: 'rtl' });
-    });
-  });
-
-  // نسخ الدمج (merged cells)
-  // ExcelJS يخزن الدمج داخليًا؛ ندعم الشكلين (Set أو Array)
-  if (srcSheet._merges && typeof srcSheet._merges.forEach === 'function') {
-    srcSheet._merges.forEach(range => dstSheet.mergeCells(range));
-  } else if (Array.isArray(srcSheet._merges)) {
-    srcSheet._merges.forEach(range => dstSheet.mergeCells(range));
-  }
+  showNotification(`تم تصدير ${requests.length} نموذج!`, 'success');
 }
 
 
@@ -4481,120 +4758,6 @@ function showNotification(message, type = 'info', duration = 2000) {
     setTimeout(() => notification.remove(), 300);
   }, duration); // ⬅️ مدة قابلة للتخصيص (افتراضي 2 ثانية)
 }
-// Export Single PDF
-
-// Export Single PDF (يدعم imageUrl من Drive بتحويلها إلى Base64)
-// Export Single PDF (يدعم imageUrl من Drive بتحويلها إلى Base64)
-// === استبدل الدالة كاملة بهذه النسخة ===
-async function exportSinglePDF(requestId) {
-  const req = requests.find(r => r.id === requestId);
-  if (!req) { alert('الطلب غير موجود'); return; }
-
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF('p', 'mm', 'a4');
-  doc.setR2L(true);
-
-  const pageW = doc.internal.pageSize.getWidth();
-  const pageH = doc.internal.pageSize.getHeight();
-  let y = 20;
-
-  // رأس الصفحة
-  doc.setFontSize(20);
-  doc.setTextColor(0, 99, 65);
-
-  doc.text('🔧', 15, y);
-  doc.setFontSize(16);
-  doc.setTextColor(0, 0, 0);
-  doc.text(`نموذج أمر عمل (صيانة) - رقم ${req.id}`, pageW / 2, y, { align: 'center' });
-  y += 12;
-
-  doc.setFontSize(11);
-  const row = (label, value) => {
-    doc.text(`${label}: ${value || '-'}`, pageW - 15, y, { align: 'right' });
-    y += 7;
-  };
-
-  row('نوع الطلب', req.type);
-  row('المبنى', req.building);
-  row('نوع الصيانة', req.maintenanceType);
-  row('صاحب الطلب', req.requesterName);
-  row('التاريخ', `${req.date || '-'} — ${req.hijriDate || '-'}`);
-  row('الوقت', req.time || '-');
-
-  // فاصل
-  y += 2; doc.setDrawColor(220); doc.line(15, y, pageW - 15, y); y += 6;
-
-  // وصف العطل (بتفاف)
-  doc.setTextColor(0, 99, 65);
-  doc.text('وصف العطل', pageW - 15, y, { align: 'right' }); y += 6;
-  doc.setTextColor(0, 0, 0);
-  const desc = doc.splitTextToSize(req.faultDescription || '-', pageW - 30);
-  doc.text(desc, pageW - 15, y, { align: 'right' });
-  y += Math.min(40, desc.length * 6);
-
-  // ملخص التنفيذ/الحالات
-  y += 4;
-  doc.setTextColor(0, 99, 65);
-  doc.text('ملخص التنفيذ', pageW - 15, y, { align: 'right' }); y += 6;
-  doc.setTextColor(0, 0, 0);
-  [
-    `الحالة الحالية: ${req.status || '-'}`,
-    `الفني المعيّن: ${req.assignedTechnicianName || req.technicianName || '-'}`,
-    `حالة العمل: ${req.workStatus || '-'}`,
-    `المشرف: ${req.supervisorName || '-'}`,
-    `قرار المشرف: ${req.supervisorDecision || '-'}`,
-    `تم الإصلاح: ${req.isFixed || '-'}`,
-    `مستوى الرضا: ${req.satisfactionLevel || '-'}`
-  ].forEach(line => { doc.text(line, pageW - 15, y, { align: 'right' }); y += 6; });
-
-  // دالة مساعدة لإدراج صورة (Base64 فقط)
-  async function addImageBlock(title, dataUrl) {
-    if (!dataUrl) return;
-    const imgW = 80, imgH = 60;
-
-    if (y + imgH + 20 > pageH) { doc.addPage(); y = 20; }
-    doc.setTextColor(0, 99, 65);
-    doc.text(title, pageW - 15, y, { align: 'right' }); y += 6;
-    doc.setTextColor(0, 0, 0);
-
-    try {
-      const ext = dataUrl.startsWith('data:image/png') ? 'PNG' : 'JPEG';
-      doc.addImage(dataUrl, ext, pageW - 15 - imgW, y, imgW, imgH);
-      y += imgH + 6;
-    } catch (e) {
-      console.warn('addImage error:', e);
-    }
-  }
-
-  // تجهيز صور العطل والإصلاح (Base64 إن أمكن)
-  let faultData = req.image || '';
-  if (!faultData && req.imageUrl) {
-    faultData =
-      (await getDriveImageAsDataURL(req.imageUrl)) ||
-      (await (async () => { try { return await urlToDataURL(req.imageUrl); } catch { return ''; } })());
-  }
-  await addImageBlock('صورة العطل', faultData);
-
-  let repairData = req.repairImage || '';
-  if (!repairData && req.repairImageUrl) {
-    repairData =
-      (await getDriveImageAsDataURL(req.repairImageUrl)) ||
-      (await (async () => { try { return await urlToDataURL(req.repairImageUrl); } catch { return ''; } })());
-  }
-  await addImageBlock('صورة الإصلاح', repairData);
-
-  // تذييل الصفحات
-  const pageCount = doc.internal.getNumberOfPages();
-  for (let i = 1; i <= pageCount; i++) {
-    doc.setPage(i);
-    doc.setFontSize(9);
-    doc.setTextColor(150);
-    doc.text(`صفحة ${i} من ${pageCount}`, pageW / 2, pageH - 10, { align: 'center' });
-  }
-
-  doc.save(`نموذج_طلب_صيانة_${req.id}.pdf`);
-}
-
 // Print Report
 function printReport() {
   window.print();
@@ -4716,6 +4879,18 @@ window.checkSyncQueue = function() {
         `قيد المعالجة: ${syncQueue.processing ? 'نعم' : 'لا'}\n\n` +
         `تفاصيل إضافية في Console`);
 };
+
+// ✅ دالة عرض وإخفاء شاشة الانتظار
+function showLoadingScreen(show = true) {
+  const loadingScreen = document.getElementById('loadingScreen');
+  if (loadingScreen) {
+    if (show) {
+      loadingScreen.classList.add('show');
+    } else {
+      loadingScreen.classList.remove('show');
+    }
+  }
+}
 
 window.addEventListener('error', (event) => {
   console.error('خطأ في التطبيق:', event.error);
